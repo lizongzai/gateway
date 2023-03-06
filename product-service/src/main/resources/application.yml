@@ -32,15 +32,3 @@ eureka:
       defaultZone: http://root:123456@localhost:8761/eureka/,http://root:123456@localhost:8762/eureka/
     register-with-eureka: true
     fetch-registry: true
-
-# 度量指标监控与健康检测
-management:
-  endpoints:
-    web:
-      exposure:
-        # 开启shutdown端点访问
-        include: shutdown
-  endpoint:
-    shutdown:
-      # 开启shutdown实现优雅停止服务
-      enabled: true
