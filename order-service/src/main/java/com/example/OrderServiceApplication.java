@@ -14,22 +14,6 @@ import org.springframework.web.client.RestTemplate;
 @MapperScan("com.example.mapper")
 public class OrderServiceApplication {
 
-  //  @Bean
-  //  public Logger.Level getLog() {
-  //    return Level.FULL;
-  //  }
-
-  @Bean
-  public RandomRule randomRule() {
-    return new RandomRule();
-  }
-
-  @Bean
-  @LoadBalanced
-  public RestTemplate restTemplate() {
-    return new RestTemplate();
-  }
-
   public static void main(String[] args) {
     SpringApplication.run(OrderServiceApplication.class, args);
   }
