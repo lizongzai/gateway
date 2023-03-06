@@ -76,6 +76,18 @@ public class ProductController {
 
 
   /**
+   * 功能描述: 使用GET/POST方法, 根据主键查询商品
+   *
+   * @param id
+   * @return
+   */
+  @RequestMapping("/info")
+  public Product selectProductInfoById(@RequestParam("id") Integer id) {
+    return productService.selectProductById(id);
+  }
+
+
+  /**
    * 功能描述: 使用POST方法,根据主键查询商品
    *
    * @param id

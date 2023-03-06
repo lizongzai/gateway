@@ -11,8 +11,16 @@ spring:
         - id: product-service           # 路由 ID，唯一
           uri: http://localhost:7070/   # 目标 URI，路由到微服务的地址
           predicates:                   # 断言（判断条件）
-            - Path=/product/**          # 匹配对应 URL 的请求，将匹配到的请求追加在目标 URI 之后
-        - id: order-service           # 路由 ID，唯一
+            #- Path=/product/**         # 匹配对应 URL 的请求，将匹配到的请求追加在目标 URI 之后
+            #- Query=token              # 匹配请求参数中包含 token 的请求
+            #- Query=token, password.   # 匹配请求参数中包含 token 并且其参数值满足正则表达式 abc. 的请求
+            #- Method=GET               # 匹配任意 GET 请求
+            #- After=2023-04-23T20:20:20.000+08:00[Asia/Shanghai] # 匹配中国上海时间 2020-02-02 20:20:20 之后的请求
+            #- RemoteAddr=192.168.1.4/0 # 匹配远程地址请求是 RemoteAddr 的请求，0表示子网掩码
+            - Header=X-Request-Id, \d+  # 匹配请求头包含 X-Request-Id 并且其值匹配正则表达式 \d+ 的请求,表示任意数字
+
+
+        - id: order-service             # 路由 ID，唯一
           uri: http://localhost:9090/   # 目标 URI，路由到微服务的地址
           predicates: # 断言（判断条件）
-            - Path=/order/**          # 匹配对应 URL 的请求，将匹配到的请求追加在目标 URI 之后
+            - Path=/order/**            # 匹配对应 URL 的请求，将匹配到的请求追加在目标 URI 之后
