@@ -20,7 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author lizongzai
- * @since 2023-02-23
+ * @date 2023/03/06 14:45
+ * @since 1.0.0
  */
 @RestController
 @RequestMapping("/product")

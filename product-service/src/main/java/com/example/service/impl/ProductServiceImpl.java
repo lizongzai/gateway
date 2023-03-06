@@ -16,7 +16,8 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author lizongzai
- * @since 2023-02-23
+ * @date 2023/03/06 14:45
+ * @since 1.0.0
  */
 @Service
 public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> implements
