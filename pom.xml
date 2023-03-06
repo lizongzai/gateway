@@ -11,6 +11,7 @@
     <module>eureka-server02</module>
     <module>product-service</module>
     <module>order-service</module>
+    <module>gateway-server</module>
   </modules>
   <packaging>pom</packaging>
 
