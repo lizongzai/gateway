@@ -9,7 +9,8 @@ import com.example.pojo.Order;
  * </p>
  *
  * @author lizongzai
- * @since 2023-02-24
+ * @date 2023/03/06 14:45
+ * @since 1.0.0
  */
 public interface OrderMapper extends BaseMapper<Order> {
 

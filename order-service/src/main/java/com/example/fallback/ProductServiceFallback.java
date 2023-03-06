@@ -10,7 +10,7 @@ import java.util.List;
  * 功能描述: 服务熔断降级处理
  *
  * @author lizongzai
- * @date 2023/03/01 14:45
+ * @date 2023/03/06 14:45
  * @since 1.0.0
  */
 //@Component
