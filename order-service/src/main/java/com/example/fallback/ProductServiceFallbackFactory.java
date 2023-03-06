@@ -2,11 +2,11 @@ package com.example.fallback;
 
 import com.example.pojo.Product;
 import com.example.service.IProductService;
+import feign.hystrix.FallbackFactory;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 
 /**
