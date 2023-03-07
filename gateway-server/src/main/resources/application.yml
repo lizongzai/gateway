@@ -12,20 +12,55 @@ spring:
           uri: lb://product-service     # lb:// 根据服务名称从注册中心获取服务请求地址
           predicates: # 断言（判断条件）
             # 匹配对应 URI 的请求，将匹配到的请求追加在目标 URI 之后
-            #- Path=/product/**, /api-gateway/**
-            #- Path=/**
-            # 匹配对应 URI 的请求，将匹配到的请求追加在目标 URI 之后
-            - Path=/api/product/{segment}
+            - Path=/product/**
           filters: # 网关过滤器
-            # 将 /api-gateway/product/1 重写为 /product/1
-            #- RewritePath=/api-gateway(?<segment>/?.*), $\{segment}
-            # 将 /1 重写为 /product/1
-            #- PrefixPath=/product
-            # 将 /api/123/product/1 重写为 /product/1
-            #- StripPrefix=2
-            # 将 /api/product/1 重写为 /product/1
-            - SetPath=/product/{segment}
+            # 限流过滤器
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1 # 令牌桶每秒填充速率
+                redis-rate-limiter.burstCapacity: 2 # 令牌桶总容量
+                key-resolver: "#{@pathKeyResolver}" # 使用 SpEL 表达式按名称引用 bean
 
+  #      routes:
+  #        - id: product-service           # 路由 ID，唯一
+  #          uri: lb://product-service     # lb:// 根据服务名称从注册中心获取服务请求地址
+  #          predicates: # 断言（判断条件）
+  #            # 匹配对应 URI 的请求，将匹配到的请求追加在目标 URI 之后
+  #            #- Path=/product/**, /api-gateway/**
+  #            #- Path=/**
+  #            # 匹配对应 URI 的请求，将匹配到的请求追加在目标 URI 之后
+  #            - Path=/api/product/{segment}
+  #          filters: # 网关过滤器
+  #            # 将 /api-gateway/product/1 重写为 /product/1
+  #            #- RewritePath=/api-gateway(?<segment>/?.*), $\{segment}
+  #            # 将 /1 重写为 /product/1
+  #            #- PrefixPath=/product
+  #            # 将 /api/123/product/1 重写为 /product/1
+  #            #- StripPrefix=2
+  #            # 将 /api/product/1 重写为 /product/1
+  #            - SetPath=/product/{segment}
+
+  redis:
+    #超时时间
+    timeout: 10000ms
+    #服务器地址
+    host: 192.168.126.61
+    #服务器端口
+    port: 6379
+    #数据库
+    database: 0
+    #密码
+    password: Rational123
+    lettuce:
+      pool:
+        #最大连接数，默认8
+        max-active: 1024
+        #最大连接阻塞等待时间，默认-1
+        max-wait: 10000ms
+        #最大空闲连接
+        max-idle: 200
+        #最小空闲连接
+        min-idle: 5
 
 #      discovery:
 #        locator:
