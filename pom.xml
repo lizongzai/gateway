@@ -12,6 +12,7 @@
     <module>product-service</module>
     <module>order-service</module>
     <module>gateway-server</module>
+    <module>gateway-server-sentinel</module>
   </modules>
   <packaging>pom</packaging>
 

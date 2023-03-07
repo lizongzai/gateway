@@ -12,6 +12,7 @@
         <module name="eureka-server01" />
         <module name="eureka-server02" />
         <module name="order-service" />
+        <module name="gateway-server-sentinel" />
       </profile>
     </annotationProcessing>
   </component>
