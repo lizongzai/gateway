@@ -59,4 +59,9 @@ public class OrderController {
     return orderService.searchOrderById(id);
   }
 
+  @GetMapping("/index")
+  public String index() {
+    return "Hello world";
+  }
+
 }
